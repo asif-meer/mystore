@@ -12,6 +12,7 @@ Store::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
@@ -31,6 +32,7 @@ Store::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+  config.assets.initialize_on_precompile = false
 
   # Expands the lines which load the assets
   config.assets.debug = true
