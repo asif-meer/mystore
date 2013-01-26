@@ -51,14 +51,14 @@
               <li><%= link_to "Suppliers", "/suppliers"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
               <li>
-                
+                <div class="span3">
                     <% if user_signed_in? %>
                         Signed in as <%= current_user.email %>. if not you?
                         <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
                     <% else %>
                         <%= link_to 'Sign in', new_user_session_path %> 
                     <% end %>
-                
+                </div>
               </li>              
             </ul>
           </div><!--/.nav-collapse -->
