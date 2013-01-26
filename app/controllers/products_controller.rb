@@ -2,8 +2,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-
+    if params.keys.include?("supplier")
+	sp_id = params[:supplier]
+	
+	@products = Product.where(:supplier_id => sp_id) #find_by_supplier_id(sp_id)
+    else
+	@products = Product.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
