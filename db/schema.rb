@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126095844) do
+ActiveRecord::Schema.define(:version => 20130126162643) do
 
   create_table "logged_exceptions", :force => true do |t|
     t.string   "exception_class"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20130126095844) do
     t.text     "request"
     t.datetime "created_at"
   end
+
+  create_table "product_stocks", :force => true do |t|
+    t.integer  "quantity",   :default => 0
+    t.integer  "product_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "product_stocks", ["product_id"], :name => "index_product_stocks_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
