@@ -15,6 +15,7 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "devise"
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

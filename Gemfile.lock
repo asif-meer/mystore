@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: 1340635ff0d6eb80f5b6815010b52dac0be0765c
+  specs:
+    annotate (2.6.0.beta1)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
+
+GIT
   remote: git://github.com/jchunky/exception_logger.git
   revision: 85fa67d7024edf2d48387619b71844f187cf374f
   specs:
@@ -172,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   coffee-rails (~> 3.2.1)
   devise
   exception_logger!
