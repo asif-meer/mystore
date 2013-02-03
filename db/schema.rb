@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126162643) do
+ActiveRecord::Schema.define(:version => 20130203110737) do
 
   create_table "logged_exceptions", :force => true do |t|
     t.string   "exception_class"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20130126162643) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "supplier_id"
+  end
+
+  create_table "purchases", :force => true do |t|
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "suppliers", :force => true do |t|
