@@ -22,10 +22,10 @@
   <tbody>
     <% @purchases.each do |purchase| %>
       <tr>
-        <td><%= link_to purchase.id %></td>
+        <td><%= link_to purchase.id, edit_product_purchase_url(@product,purchase.id) %></td>
         <td><%= purchase.quantity %></td> 
         <td><%= purchase.created_at %></td>
-        <td></td>                      
+        <td><%= link_to "Edit", edit_product_purchase_url(@product,purchase.id) %></td>                      
       </tr>
     <% end %>
   </tbody>

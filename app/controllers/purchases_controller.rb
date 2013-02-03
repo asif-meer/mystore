@@ -1,8 +1,8 @@
 class PurchasesController < ApplicationController
+  before_filter :define_constants
   # GET /products
   # GET /products.json
   def index
-  	@product = Product.find(params[:product_id])
     @purchases = @product.purchase.order
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +24,6 @@ class PurchasesController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
-    @product = Product.find(params[:product_id])    
     @purchase = @product.purchase.build
 
     respond_to do |format|
@@ -35,23 +34,22 @@ class PurchasesController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.find(params[:product_id])        
-    @purchase =  @product.purchase.find(params[:id])
+     @purchase =  @product.purchase.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.find(params[:product_id])        
+ 
     @purchase = @product.purchase.build(params[:purchase])
     
     respond_to do |format|
       if @purchase.save
         format.html { redirect_to product_purchases_url(@purchase.product_id), notice: 'Product stock was successfully created.' }
-        # format.json { render json: @product, status: :created, location: @product }
+         #format.json { render json: @purchase, status: :created, location: @product }
       else
         format.html { render action: "new" }
-        # format.json { render json: @product.errors, status: :unprocessable_entity }
+         format.json { render json: @purchase.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,27 +57,31 @@ class PurchasesController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
+    @purchase = @product.purchase.find(params[:id])
 
     respond_to do |format|
-      if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+      if @purchase.update_attributes(params[:purchase])
+         format.html { redirect_to product_purchases_url(@purchase.product_id), notice: 'Product stock was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.json { render json: @purchase.errors, status: :unprocessable_entity }
       end
     end
+  end
+ 
+  def define_constants
+    @product = Product.find(params[:product_id])    
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
+    @purchase = @product.purchase.find(params[:id])
+    @purchase.destroy
 
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to product_purchases_url(@purchase.product_id) }
       format.json { head :no_content }
     end
   end
