@@ -33,6 +33,7 @@
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Stock History', product_purchases_path(product), :class => 'btn btn-mini' %>          
         </td>
       </tr>
     <% end %>
